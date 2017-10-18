@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 
+
 #define STR_LINE_MAX 1024  // max size of subscript
 
 int advance_ptr_to_space(char []);
@@ -85,12 +86,12 @@ int read_file(char filename[], int res[]) {
   
   // advance the ptr to option in the string
   while (!((fgets(str, STR_LINE_MAX, fp) == NULL) || str[0] == '\n')) {
-    i = advance_ptr_to_space(str);  // advance the ptr to content
-    i += advance_ptr_to_space(str + i); // advance the ptr to haifun
-
-    option = str[++i];  // advance the ptr to option char and substitute
+	i = 0;
+	while (str[i++] != '-') ; // advance the ptr to option
+	option = str[i];
     i += advance_ptr_to_space(str + i); // advance ptr to plus or minus
     plus_or_minus = str[i++];           // substitute plus or minus and advance ptr
+
 
     // aggregate result
     switch(plus_or_minus) {
