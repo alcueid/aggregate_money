@@ -1,0 +1,49 @@
+# RULE
+  Record income and expenditure.
+  Switch files every month.
+  Compute by c program at end of month.
+
+# OPTIONS
+  -w: wallet
+  -c: credit
+  -e: electronic money
+  -p: prepaid card
+  -g: gift card
+
+# SAMPLE
+  xxxx detail_detail_detail -w +0
+  xxxx detail_detail_detail -c -0
+
+# DETAIL
+0831 osaipo -c -2332
+0908 samusung_micro_sd -c -848
+0910 pramodel_ref -c -3909
+0917 router_whr-1166dhp4 -c -4426
+0924 dropbox_fee -c -12960
+0926 ntt-com -c -2238
+0000 abc -e -500
+0002 def -p -1000
+0003 ghi -g -1500
+0004 kjl -e +1000
+0005 asd -p +1500
+0006 asd -g +100000
+
+-------------------------------------------------
+# AGGREGATE RESULTS (income)
+  Wallet          :         0 yen
+  Credit          :         0 yen
+  Electronic Money:     1,000 yen
+  Prepaid Card    :     1,500 yen
+  Gift Card       :   100,000 yen
+  -------------------------------
+  Total           :   102,500 yen
+
+# AGGREGATE RESULTS (expenditure)
+  Wallet          :         0 yen
+  Credit          :   -26,713 yen
+  Electronic Money:      -500 yen
+  Prepaid Card    :    -1,000 yen
+  Gift Card       :    -1,500 yen
+  -------------------------------
+  Total           :   -29,713 yen
+-------------------------------------------------
