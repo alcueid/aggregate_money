@@ -1,0 +1,43 @@
+proc_money
+
+
+Abstract:
+  - read file.
+  - read line until # DETAIL.
+  - aggreate income and expenditure.
+  - store the aggregate results.
+  - append at the beginning of the file.
+
+
+Result:
+----------------------------------------------------------------------------------------
+  # AGGREGATE RESULTS (income)
+    Wallet:  +10,000 yen
+    Credit: +100,000 yen
+
+  # AGGREGATE RESULTS (expenditure)
+    Wallet: -50,000 yen
+    Credit: -50,000 yen
+----------------------------------------------------------------------------------------
+
+  # RULE
+    Record income and expenditure.
+    Switch files every month.
+    Compute by c program at end of month.
+
+  # OPTIONS
+    -w: wallet
+    -c: credit
+
+  # SAMPLE
+    xxxx detail_detail_detail -w +0
+    xxxx detail_detail_detail -c -0
+
+  # DETAIL
+    0831 osaipo -c -2332
+    0908 samusung_micro_sd -c -848
+    0910 pramodel_ref -c -3909
+    0917 router_whr-1166dhp4 -c -4426
+    0924 dropbox_fee -c -12960
+    0926 ntt-com -c -2238
+
