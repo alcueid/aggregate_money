@@ -6,6 +6,7 @@
 # OPTIONS
   -w: wallet
   -c: credit
+  -b: bank
   -e: electronic money
   -p: prepaid card
   -g: gift card
@@ -27,23 +28,29 @@
 0004 kjl -e +1000
 0005 asd -p +1500
 0006 asd -g +100000
+0007 wef -b +10000
+0008 klk -b -10000
+0010 zdx -b +500
+0011 qww -b -10
 
 -------------------------------------------------
 # AGGREGATE RESULTS (income)
   Wallet          :         0 yen
+  Bank            :    10,500 yen
   Credit          :         0 yen
   Electronic Money:     1,000 yen
   Prepaid Card    :     1,500 yen
   Gift Card       :   100,000 yen
   -------------------------------
-  Total           :   102,500 yen
+  Total           :   113,000 yen
 
 # AGGREGATE RESULTS (expenditure)
   Wallet          :         0 yen
+  Bank            :   -10,010 yen
   Credit          :   -26,713 yen
   Electronic Money:      -500 yen
   Prepaid Card    :    -1,000 yen
   Gift Card       :    -1,500 yen
   -------------------------------
-  Total           :   -29,713 yen
+  Total           :   -39,723 yen
 -------------------------------------------------

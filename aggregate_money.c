@@ -99,17 +99,20 @@ int read_file(char filename[], int res[]) {
       case 'w':
         res[0] += atoi(&str[i]);
         break;
+	  case 'b':
+		res[1] += atoi(&str[i]);
+		break;
       case 'c':
-        res[1] += atoi(&str[i]);
+        res[2] += atoi(&str[i]);
         break;
 	  case 'e':
-		res[2] += atoi(&str[i]);
-		break;
-	  case 'p':
 		res[3] += atoi(&str[i]);
 		break;
-	  case 'g':
+	  case 'p':
 		res[4] += atoi(&str[i]);
+		break;
+	  case 'g':
+		res[5] += atoi(&str[i]);
 		break;
       default:
         printf("read_file(): unkown option %c\n", option);
@@ -119,19 +122,22 @@ int read_file(char filename[], int res[]) {
     case '-':
       switch(option) {
       case 'w':
-        res[5] -= atoi(&str[i]);
-        break;
-      case 'c':
         res[6] -= atoi(&str[i]);
         break;
-      case 'e':
-        res[7] -= atoi(&str[i]);
-        break;
-      case 'p':
+	  case 'b':
+		res[7] -= atoi(&str[i]);
+		break;
+      case 'c':
         res[8] -= atoi(&str[i]);
         break;
-      case 'g':
+      case 'e':
         res[9] -= atoi(&str[i]);
+        break;
+      case 'p':
+        res[10] -= atoi(&str[i]);
+        break;
+      case 'g':
+        res[11] -= atoi(&str[i]);
         break;
       default:
         printf("read_file(): unkown option %c\n", option);
@@ -169,23 +175,25 @@ int append_file(char filename[], int res[]) {
   fprintf(fp, "-------------------------------------------------\n");
   fprintf(fp, "# AGGREGATE RESULTS (income)\n");
   fprintf(fp, "  Wallet          :%10s yen\n", insert_comma(res[0]));
-  fprintf(fp, "  Credit          :%10s yen\n", insert_comma(res[1]));
-  fprintf(fp, "  Electronic Money:%10s yen\n", insert_comma(res[2]));
-  fprintf(fp, "  Prepaid Card    :%10s yen\n", insert_comma(res[3]));
-  fprintf(fp, "  Gift Card       :%10s yen\n", insert_comma(res[4]));
+  fprintf(fp, "  Bank            :%10s yen\n", insert_comma(res[1]));
+  fprintf(fp, "  Credit          :%10s yen\n", insert_comma(res[2]));
+  fprintf(fp, "  Electronic Money:%10s yen\n", insert_comma(res[3]));
+  fprintf(fp, "  Prepaid Card    :%10s yen\n", insert_comma(res[4]));
+  fprintf(fp, "  Gift Card       :%10s yen\n", insert_comma(res[5]));
   fprintf(fp, "  -------------------------------\n");
   fprintf(fp, "  Total           :%10s yen\n",
-  		  insert_comma(res[0] + res[1] + res[2] + res[3] + res[4]));
+  		  insert_comma(res[0] + res[1] + res[2] + res[3] + res[4] + res[5]));
   fprintf(fp, "\n");
   fprintf(fp, "# AGGREGATE RESULTS (expenditure)\n");
-  fprintf(fp, "  Wallet          :%10s yen\n", insert_comma(res[5]));
-  fprintf(fp, "  Credit          :%10s yen\n", insert_comma(res[6]));
-  fprintf(fp, "  Electronic Money:%10s yen\n", insert_comma(res[7]));
-  fprintf(fp, "  Prepaid Card    :%10s yen\n", insert_comma(res[8]));
-  fprintf(fp, "  Gift Card       :%10s yen\n", insert_comma(res[9]));
+  fprintf(fp, "  Wallet          :%10s yen\n", insert_comma(res[6]));
+  fprintf(fp, "  Bank            :%10s yen\n", insert_comma(res[7]));
+  fprintf(fp, "  Credit          :%10s yen\n", insert_comma(res[8]));
+  fprintf(fp, "  Electronic Money:%10s yen\n", insert_comma(res[9]));
+  fprintf(fp, "  Prepaid Card    :%10s yen\n", insert_comma(res[10]));
+  fprintf(fp, "  Gift Card       :%10s yen\n", insert_comma(res[11]));
   fprintf(fp, "  -------------------------------\n");
   fprintf(fp, "  Total           :%10s yen\n",
-  		  insert_comma(res[5] + res[6] + res[7] + res[8] + res[9]));
+  		  insert_comma(res[6] + res[7] + res[8] + res[9] + res[10] + res[11]));
   fprintf(fp, "-------------------------------------------------\n");
 
   // close file
@@ -197,20 +205,22 @@ int append_file(char filename[], int res[]) {
 int main(int argc, char *argv[])
 {
   /* array description
-    aggregate_result[0] : income on wallet
-    aggregate_result[1] : income on credit
-	aggregate_result[2] : income on electronic money
-	aggregate_result[3] : income on prepaid money
-	aggregate_result[4] : income on gift card
-    aggregate_result[5] : expenditure on wallet
-    aggregate_result[6] : expenditure on credit
-    aggregate_result[7] : expenditure on electronic money
-    aggregate_result[8] : expenditure on prepaid money
-    aggregate_result[9] : expenditure on gift card
+    aggregate_result[0]  : income on wallet
+	aggregate_result[1]  : income on bank
+    aggregate_result[2]  : income on credit
+	aggregate_result[3]  : income on electronic money
+	aggregate_result[4]  : income on prepaid money
+	aggregate_result[5]  : income on gift card
+    aggregate_result[6]  : expenditure on wallet
+	aggregate_result[7]  : expenditure on bank
+    aggregate_result[8]  : expenditure on credit
+    aggregate_result[9]  : expenditure on electronic money
+    aggregate_result[10] : expenditure on prepaid money
+    aggregate_result[11] : expenditure on gift card
 
 
   */
-  int aggregate_result[10] = {0};
+  int aggregate_result[12] = {0};
 
   // check argument
   if (argc != 2) {
